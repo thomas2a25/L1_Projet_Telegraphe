@@ -64,3 +64,7 @@ Nous avons la fierté d’avoir mené à terme notre projet en créant un vérit
 Nous avons réussi à traduire l'alphabet Morse en ASCII, et à faire apparaître le message avec sa traduction à l’écran de notre ordinateur. Nous avons également réussi à envoyer les messages à une autre machine en utilisant la technologie LoRa Physical.
 Notre télégraphe nous permet aussi d'effectuer l’opération inverse, c’est-à-dire, écrire un message en ASCII sur le clavier de l’ordinateur émetteur, qui sera encodé en morse par Arduino, puis envoyé sur une autre machine réceptrice. 
 Nous pouvons ainsi nous mettre dans la peau de réels opérateurs télégraphes ! Et qui sait, peut-être aurons-nous un jour besoin de communiquer en Morse, si les tensions actuelles menaçant la paix dans le monde venaient à s’aggraver.
+
+# Montage final
+
+<img width="931" alt="Montage" src="https://user-images.githubusercontent.com/103073162/170997660-992623e4-b049-4f9f-bad7-b581d3f037a5.png">
