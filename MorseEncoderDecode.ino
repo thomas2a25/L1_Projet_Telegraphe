@@ -1,6 +1,6 @@
 /*
  * Morse Code Encoder Decoder  Version finale
-*/
+ */
 
 #include <FastLED.h>
 #include <SPI.h>
