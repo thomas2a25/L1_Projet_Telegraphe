@@ -13,7 +13,7 @@ Il permet d’envoyer des messages à distance, codés en Morse, via des ondes r
 
 Étant novices en télécommunications, et n’ayant jamais réalisé d’appareils électriques, le TSF cochait toutes les cases d’un projet qui serait à la fois passionnant à réaliser, et accessible dans sa conception.
 
-Ce projet va donc nous permettre de fabriquer notre propre TSF, et d’envoyer des messages codés en Morse, puis retranscrits en caractères alphanumériques par notre code Arduino et inversement.
+Ce projet va donc nous permettre de fabriquer notre propre TSF, et d’envoyer des messages codés en Morse, puis retranscrits en caractères alphanumériques par notre code Arduino et inversement. Finalement, nous souhaitons concevoir un télégraphe permettant la communication sans fil complète entre deux cartes RFThings.
 
 # Liste des composants et logiciels
 
@@ -26,7 +26,7 @@ Ce projet va donc nous permettre de fabriquer notre propre TSF, et d’envoyer d
 
 Le projet va se faire en 2 étapes :
 
-- 1ère étape : Encodage/décodage ASCII <-> Morse avec configuration buzzers et leds associés
+1ère étape : Encodage/décodage ASCII <-> Morse avec configuration buzzers et leds associés
 
 Pour réaliser l'encodage/décodage ASCII <-> Morse, nous allons utiliser les deux boutons de la carte Arduino. Le bouton gauche est programmé pour représenter un point et le bouton droit est programmé pour représenter une barre.
 
@@ -40,16 +40,25 @@ On considère 1 unité = 300ms. Nous avons donc défini les intervalles de temps
   - Temps entre deux lettres = 3 unités (900ms)
   - Temps entre deux mots = 7 unités (2100ms)
 
--	2ème étape : Envoi des messages codés/décodés
+2ème étape : Codage pour l'envoi de messages
 
+Pour réaliser l'envoi de messages codés/décodés, nous avons utilisé la technologie LoRa Physical, qui pour nous était la meilleure façon d'obtenir une réelle communication entre deux cartes situées à distance. On estime la portée max à environ 15km. Nous nous sommes inspirés du github de Fabien Ferrero https://github.com/FabienFerrero/UCA_Education_Board/tree/master/Code/LoRa_PHY.
 
-Nous avons utilisé la technologie LoRa Physical, qui pour nous était la meilleure façon d'obtenir une réelle communication entre deux cartes situées à distance. On estime la portée max à environ 15km.
-Nous avons utilisé deux cartes qui fonctionnent en émetteur/récepteur à tour de rôle.
+# Fonctionnement
 
+La communication peut se faire :
+
+- soit en Morse vers ASCII (décodage Morse-ASCII)
+
+- soit en ASCII vers Morse : dans ce cas-là, les deux cartes vont réagir par des bips sonores et LEDS (encodage ASCII-Morse)
+
+La réception des messages se fait à la fois sur le moniteur série et grâce aux bips et LEDS, selon si nous souhaitons décoder du Morse comme à l'ancienne, ou se faciliter la tâche avec la traduction apparaissant directement.
+
+Nous avons utilisé deux cartes RFThings qui fonctionnent en émetteur/récepteur à tour de rôle.
 
 # Conclusion
 
-À ce jour, nous avons réussi à traduire un code Morse en caractères alphanumériques, et à faire apparaître le message à l’écran de notre ordinateur. 
-Prochainement, nous devrons déployer un système permettant d’envoyer les messages décodés, à une autre machine, en utilisant TTN et Node Red.
-Une fois cette étape réalisée, nous testerons la possibilité d’effectuer l’opération inverse, c’est-à-dire, écrire un message en caractères alphanumériques sur le clavier de l’ordinateur émetteur, qui sera encodé en morse par Arduino, puis envoyé sur une autre machine réceptrice, où le message codé sera pris en charge par l’audio de la machine.
-Nous pourrons ainsi nous mettre dans la peau de réels opérateurs télégraphes ! Et qui sait, peut-être auront nous un jour besoin de communiquer en Morse, si les tensions actuelles menaçant la paix dans le monde venaient à s’aggraver…
+Nous avons la fierté d’avoir mené à terme notre projet en créant un véritable système de communication sans fil en Morse qui rend hommage au télégraphe. 
+Nous avons réussi à traduire l'alphabet Morse en ASCII, et à faire apparaître le message avec sa traduction à l’écran de notre ordinateur. Nous avons également réussi à envoyer les messages à une autre machine en utilisant la technologie LoRa Physical.
+Notre télégraphe nous permet aussi d'effectuer l’opération inverse, c’est-à-dire, écrire un message en ASCII sur le clavier de l’ordinateur émetteur, qui sera encodé en morse par Arduino, puis envoyé sur une autre machine réceptrice. 
+Nous pouvons ainsi nous mettre dans la peau de réels opérateurs télégraphes ! Et qui sait, peut-être aurons-nous un jour besoin de communiquer en Morse, si les tensions actuelles menaçant la paix dans le monde venaient à s’aggraver.
