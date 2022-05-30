@@ -1,18 +1,7 @@
 /*
- * Morse Code Encoder Decoder  V1.0
- * - Button to serial monitor (buzzer beep and led on when button pressed)
- * - Serial monitor to buzzer (led on when dot or dash)
- */
+ * Morse Code Encoder Decoder  Version finale
+*/
 
-/* MORSE CODE TIMING, here is the information about timing for you.
- * Dot: 1 unit
- * Dash: 3 units
- * Intra-character space (the gap between dits and dahs within a character): 1 unit
- * Inter-character space (the gap between the characters of a word): 3 units
- * Word space (the gap between two words): 7 units
- * 
- * reference: https://morsecode.world/international/timing.html
- */
 #include <FastLED.h>
 #include <SPI.h>
 #include "LoRa.h"
