@@ -8,7 +8,8 @@ Ayant revu nos ambitions à la baisse, nous avons pris la décision de fabriquer
 
 # Description du projet
 
-Le Télégraphe sans fil, apparu à la fin du 19ème siècle, est l’outil pionnier des communications sans fil. Il permet d’envoyer des messages à distance, codés en Morse, via des ondes radios. Le TSF (télégraphe sans fil) a été largement utilisé jusqu’à la moitié du 20ème siècle. Sa simplicité de conception et d’utilisation en ont fait l’un des acteurs majeurs des communications durant les deux Guerres Mondiales.
+Le télégraphe sans fil (TSF), apparu à la fin du 19ème siècle, est l’outil pionnier des communications sans fil.
+Il permet d’envoyer des messages à distance, codés en Morse, via des ondes radios. Le TSF a été largement utilisé jusqu’à la moitié du 20ème siècle. Sa simplicité de conception et d’utilisation en ont fait l’un des acteurs majeurs des communications durant les deux Guerres Mondiales.
 
 Étant novices en télécommunications, et n’ayant jamais réalisé d’appareils électriques, le TSF cochait toutes les cases d’un projet qui serait à la fois passionnant à réaliser, et accessible dans sa conception.
 
@@ -16,25 +17,35 @@ Ce projet va donc nous permettre de fabriquer notre propre TSF, et d’envoyer d
 
 # Liste des composants et logiciels
 
--	Carte Arduino
--	Buzzer 
--	The Things Network (TTN)
--	Node Red
--	Arduino
+-	2 Cartes RFThings
+-	2 buzzers
+-	Fils de connexion
+-	Logiciel Arduino
 
 # Etapes de réalisation
 
 Le projet va se faire en 2 étapes :
 
--	1ère étape : Arduino récepteur
+- 1ère étape : Encodage/décodage ASCII <-> Morse avec configuration buzzers et leds associés
 
-Coder en local c’est-à-dire que le message taper en morse sur la carte sera réceptionner avec Arduino puis décoder en caractères alphanumériques. 
+Pour réaliser l'encodage/décodage ASCII <-> Morse, nous allons utiliser les deux boutons de la carte Arduino. Le bouton gauche est programmé pour représenter un point et le bouton droit est programmé pour représenter une barre.
 
--	2ème étape : Arduino émetteur
+Chaque pression de bouton est associée à un bip sonore du buzzer et aussi à l'allumage des leds horizontales en bas de la carte. Les leds vertes sont associées au bouton gauche (=point) et les leds rouges sont associées au bouton droit (=barre).
 
-Coder pour que Arduino puisse renvoyer le message décodé. 
-Il va falloir connecter Arduino à TTN, ce qui va permettre de recueillir les données à partir de la carte et de les renvoyer sur un autre machine grâce à Node Red .
-Node Red permet de réceptionner ce qui est envoyé par TTN et permettra finalement d’envoyer le message par mail par exemple. 
+On considère 1 unité = 300ms. Nous avons donc défini les intervalles de temps suivants : 
+
+  - Un point = 1 unité
+  - Une barre = 3 unités (900ms)
+  - Temps entre deux caractères (point et barre) = 1 unité
+  - Temps entre deux lettres = 3 unités (900ms)
+  - Temps entre deux mots = 7 unités (2100ms)
+
+-	2ème étape : Envoi des messages codés/décodés
+
+
+Nous avons utilisé la technologie LoRa Physical, qui pour nous était la meilleure façon d'obtenir une réelle communication entre deux cartes situées à distance. On estime la portée max à environ 15km.
+Nous avons utilisé deux cartes qui fonctionnent en émetteur/récepteur à tour de rôle.
+
 
 # Conclusion
 
