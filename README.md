@@ -39,6 +39,8 @@ On considère 1 unité = 300ms. Nous avons donc défini les intervalles de temps
   - Temps entre deux caractères (point et barre) = 1 unité
   - Temps entre deux lettres = 3 unités (900ms)
   - Temps entre deux mots = 7 unités (2100ms)
+  - 
+![Alphabet morse](https://user-images.githubusercontent.com/103073162/170978607-f6b5ffa1-59f9-4226-8ad4-e3102871feed.jpeg)
 
 2ème étape : Codage pour l'envoi de messages
 
